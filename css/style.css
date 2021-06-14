@@ -1,0 +1,245 @@
+/*Add your CSS rules*/
+
+/*Some selectors you may need include are
+a.skip, header, .nav_links, .container,
+.intro, html, .text-block, etc.*/
+
+a.skip {
+    position: absolute;
+    top: -40px;
+}
+
+a.skip:focus {
+    top: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_links a:hover,
+.nav_links a:focus {
+    text-decoration: underline #50C7C7 dotted;
+    color: #50C7C7;
+}
+
+.nav_links li {
+    padding-bottom: 5px;
+}
+
+@keyframes logo_move {
+    from {width: 0;}
+    to {width: 50px;}
+}
+
+#logo {
+    animation: logo_move 1s 1;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(5, auto);
+    -webkit-grid-row-gap: 15px;
+            grid-row-gap: 15px;
+}
+
+.intro {
+    background: url("../images/header.jpg") no-repeat fixed center;
+    background-size: cover;
+    height: 400px;
+    color: white;
+    grid-column: 1 / last-col;
+}
+
+.intro p {
+    padding: 100px 0;
+}
+
+.about-image,
+.method-image,
+.clients-image,
+.contact-image {
+    grid-column: 1 / last-col;
+    max-height: 700px;
+    overflow: hidden;
+}
+
+.about,
+.method,
+.clients,
+.contact {
+    grid-column: 2 / span 1;
+}
+
+.about,
+.about-image {
+    grid-row: 2 / span 1;
+}
+
+.method,
+.method-image {
+    grid-row: 3 / span 1;
+}
+
+.clients,
+.clients-image {
+    grid-row: 4 / span 1;
+}
+
+.contact,
+.contact-image {
+    grid-row: 5 / span 1;
+}
+
+.text-block {
+    align-self: center;
+}
+
+footer a {
+    color: white;
+}
+
+@media only screen and (min-width: 750px) {
+    .nav_links {
+        flex-direction: row;
+    }
+
+    .nav_links a {
+        padding: 10px;
+    }
+
+    .container {
+        grid-template-columns: 50px auto 500px auto 50px;
+        grid-template-rows: repeat(5, 400px);
+    }
+
+    .about,
+    .clients,
+    .method-image,
+    .contact-image {
+        grid-column: 3 / span 2;
+    }
+
+    .about-image,
+    .clients-image,
+    .method,
+    .contact {
+        grid-column: 2 / span 2;
+    }
+}
+
+@media only screen and (min-width: 1125px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    @keyframes logo_move_large {
+        0% {width: 50px; left: 0;}
+        50% {width: 150px; left: 450px;}
+        100% {width: 50px; left: 0;}
+    }
+    
+    #logo {
+        animation: logo_move_large 1s 1;
+    }
+
+    .container {
+        grid-template-columns: 15px 75px 1fr 25px 1fr 75px 15px;
+        grid-template-rows: repeat(3, 400px);
+    }
+
+    .about-image,
+    .clients-image {
+        grid-column: 2 / span 5;
+    }
+
+    .clients-image {
+        grid-row: 3 / span 1;
+    }
+
+    .method-image,
+    .contact-image {
+        display: none;
+    }
+
+    .about,
+    .method {
+        grid-row: 2 / span 1;
+    }
+
+    .clients,
+    .contact {
+        grid-row: 3 / span 1;
+    }
+
+    .about,
+    .clients {
+        grid-column: 3 / span 1;
+    }
+
+    .method,
+    .contact {
+        grid-column: 5 / span 1;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    #logo {
+      animation: none;
+    }
+
+    a.skip {
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .intro {
+        background-attachment: scroll;
+    }
+}
+
+@media print {
+    img:not(#logo) {
+        display: none;
+    }
+
+    .intro {
+        background: none;
+        height: auto;
+    }
+
+    .intro p {
+        padding: 0;
+    }
+
+    header {
+        align-items: stretch;
+    }
+
+    #logo {
+        align-self: center;
+    }
+
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .text-block {
+        min-height: 0;
+    }
+
+}
+
